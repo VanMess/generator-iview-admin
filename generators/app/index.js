@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const extend = require('deep-extend');
+const _ = require('lodash');
 
 module.exports = class extends Generator {
   prompting() {
@@ -70,23 +70,27 @@ module.exports = class extends Generator {
 
   writing() {
     this.initPackage();
+    this.simplyCopyFiles();
   }
 
   install() {
-    this.installDependencies();
+    this.installDependencies({
+      bower: false
+    });
   }
 
   initPackage() {
-    const pkg = this.fs.readJSON(this.templatePath('package.json'), {});
+    let pkg = this.fs.readJSON(this.templatePath('package.json'), {});
     const {
       props
     } = this;
 
-    extend(pkg, {
-      name: props.name
+    pkg = _.merge(pkg, {
+      name: props.name,
+      description: props.description
     });
 
-    if (pkg.lint) {
+    if (props.lint) {
       let lintDep;
       switch (props.lintStyle) {
         case 'standard':
@@ -109,9 +113,7 @@ module.exports = class extends Generator {
           lintDep = {};
           break;
       }
-
-      extend(pkg, {
-        name: props.name,
+      pkg = _.merge(pkg, {
         devDependencies: {
           "babel-eslint": "^7.1.1",
           "eslint": "^4.9.0",
@@ -125,5 +127,23 @@ module.exports = class extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+
+  simplyCopyFiles() {
+    const simplyFiles = [
+      '.babelrc',
+      '.editorconfig',
+      '.eslintignore',
+      '.gitignore',
+      '.postcssrc.js',
+      'static/.gitkeep'
+    ];
+
+    _.forEach(simplyFiles, file => {
+      this.fs.copy(
+        this.templatePath(file),
+        file
+      );
+    });
   }
 };
