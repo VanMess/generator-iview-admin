@@ -5,7 +5,7 @@
     </router-link>
     <button class="btn btn-nav" type="button" @click="goBack">
       <Icon type="arrow-left-c"/>
-      返回
+      返回旧版
     </button>
     <div class="pull-right">
       <Menu mode="horizontal" theme="light" @on-select="menuSelected">
@@ -38,21 +38,22 @@
       menuSelected(name) {
         if (name === 'logout') {
           console.log('退出登录');
-          this.$router.push({name: 'login'});
         }
       },
       goBack() {
         this.$router.go(-1);
       }
-    },
-    mounted() {
-      this.load();
     }
   };
 </script>
 
 <style type="text/less" lang="less" scoped>
   @import (less) "~@/css/vars.less";
+
+  .page-logo {
+    text-decoration: none;
+    padding-left: 12px;
+  }
 
   .nav {
     border: none;

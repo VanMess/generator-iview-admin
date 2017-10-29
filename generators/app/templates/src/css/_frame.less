@@ -6,6 +6,7 @@
   height: 100%;
   overflow: hidden;
   padding-left: @menu-width;
+  box-sizing: border-box;
 
   @hd-bg: #373d41;
   &-hd {
@@ -19,10 +20,13 @@
     padding: 0 12px 0 0;
     color: #fff;
     box-shadow: 0 0 2px 0 lighten(@hd-bg, 20);
-    font-size: 0;
+
     .ivu-menu {
       background-color: transparent;
       color: inherit;
+      &-title {
+        font-size: 14px;
+      }
       &:after {
         display: none;
       }
@@ -44,6 +48,9 @@
     }
     .ivu-menu-light.ivu-menu-horizontal .ivu-menu-submenu {
       color: inherit;
+    }
+    .ivu-menu-submenu-title{
+      font-size: 14px;
     }
     .btn-nav {
       display: inline-block;
