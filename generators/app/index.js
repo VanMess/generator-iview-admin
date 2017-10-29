@@ -18,16 +18,18 @@ module.exports = class extends Generator {
       name: 'description',
       required: false,
       message: 'Project description',
-      default: 'A Vue.js project'
+      default: 'A ProductAI administration project.'
     }, {
       type: 'confirm',
       name: 'lint',
       message: 'Use ESLint to lint your code?'
     }, {
-      when: 'lint',
       name: 'lintStyle',
       type: 'list',
       message: 'Pick an ESLint preset',
+      when(answers) {
+        return answers.lint;
+      },
       choices: [{
         name: 'Airbnb (https://github.com/airbnb/javascript)',
         value: 'airbnb',
@@ -68,7 +70,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.initPackage();
-    this.simplyCopyFiles();
     this.renderTplFile();
   }
 
@@ -159,11 +160,11 @@ module.exports = class extends Generator {
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
-  simplyCopyFiles() {
-    let simplyFiles = [
+  renderTplFile() {
+    let target = [
       '.babelrc',
       '.editorconfig',
-      '.eslintignore',
+      '.gitignore',
       '.postcssrc.js',
       'index.html',
       'static/.gitkeep',
@@ -187,14 +188,20 @@ module.exports = class extends Generator {
       'src/css/vars.less',
       'src/components/dashboard/Header.vue',
       'src/components/dashboard/Root.vue',
-      'src/components/Hello.vue',
+      'src/components/dashboard/Nav.vue',
+      'src/const/nav.json',
       'src/assets/img/f_logo.svg',
-      'src/assets/img/favicon.ico'
+      'src/assets/img/favicon.ico',
+      'README.md',
+      'build/dev-server.js',
+      'build/webpack.base.conf.js',
+      'build/webpack.prod.conf.js',
+      'src/main.js',
+      'src/components/Hello.vue',
     ];
 
     if (this.props.unitTest) {
-      simplyFiles = simplyFiles.concat([
-        '.gitignore',
+      target = target.concat([
         'config/test.env.js',
         'test/unit/.eslintrc',
         'test/unit/index.js',
@@ -205,23 +212,12 @@ module.exports = class extends Generator {
       ]);
     }
 
-    _.forEach(simplyFiles, (file) => {
-      this.fs.copy(
-        this.templatePath(file),
-        file
-      );
-    });
-  }
-
-  renderTplFile() {
-    const target = [
-      'README.md',
-      '.eslintrc.js',
-      'build/dev-server.js',
-      'build/webpack.base.conf.js',
-      'build/webpack.prod.conf.js',
-      'src/main.js'
-    ];
+    if (this.props.lint) {
+      target = target.concat([
+        '.eslintrc.js',
+        '.eslintignore'
+      ]);
+    }
 
     _.forEach(target, (file) => {
       this.fs.copyTpl(
