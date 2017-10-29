@@ -8,7 +8,7 @@ A yo generator with [iView](https://www.iviewui.com/) from tecvan.
   </a>
 
   <a href="https://www.npmjs.com/package/generator-iview-admin">
-    <img src="https://www.npmjs.com/package/generator-iview-admin.svg?style=flat-square"
+    <img src="http://img.shields.io/npm/dm/generator-iview-admin.svg?style=flat-square"
          alt="Downloads">
   </a>
 
