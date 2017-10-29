@@ -76,7 +76,8 @@ npm run build --report
 
 Just a simply yo template with: vue iview eslint and karma.
 I translate the [vue webpack template](https://github.com/VanMess/webpack) from vue context to yo, and additionally define the base layout like this:
-![v1 layout](./assets/v1-screen-capture.png).So you could start up CMS liked system more quickly.
+![v1 layout](./assets/v1-screen-capture.png)
+So you could start up CMS liked system more quickly.
 
 
 ## Getting To Know Yeoman
