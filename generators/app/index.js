@@ -71,6 +71,7 @@ module.exports = class extends Generator {
   writing() {
     this.initPackage();
     this.simplyCopyFiles();
+    this.renderTplFile();
   }
 
   install() {
@@ -130,20 +131,71 @@ module.exports = class extends Generator {
   }
 
   simplyCopyFiles() {
-    const simplyFiles = [
+    let simplyFiles = [
       '.babelrc',
       '.editorconfig',
       '.eslintignore',
       '.gitignore',
       '.postcssrc.js',
-      'static/.gitkeep'
+      'static/.gitkeep',
+      'config/dev.env.js',
+      'config/index.js',
+      'config/prod.env.js',
+      'build/build.js',
+      'build/check-versions.js',
+      'build/dev-client.js',
+      'build/utils.js',
+      'build/vue-loader.conf.js',
+      'build/webpack.dev.conf.js',
+      'config/dev.env.js',
+      'config/prod.env.js',
+      'config/index.js',
+      'src/App.vue',
+      'src/router/index.js',
+      'src/css/_frame.less',
+      'src/css/_reset.less',
+      'src/css/index.less',
+      'src/css/vars.less',
+      'src/components/dashboard/Header.vue',
+      'src/components/dashboard/Root.vue',
+      'src/components/Hello.vue',
+      'src/assets/img/f_logo.svg',
+      'src/assets/img/favicon.ico'
     ];
+
+    if (this.props.unitTest) {
+      simplyFiles = simplyFiles.concat([
+        'config/test.env.js',
+        'test/unit/.eslintrc',
+        'test/unit/index.js',
+        'test/unit/index.js',
+        'test/unit/karma.conf.js',
+        'test/unit/specs/Hello.spec.js',
+        'build/webpack.test.conf.js'
+      ]);
+    }
 
     _.forEach(simplyFiles, file => {
       this.fs.copy(
         this.templatePath(file),
         file
       );
+    });
+  }
+
+  renderTplFile() {
+    const target = [
+      'README.md',
+      '.eslintrc.js',
+      'build/dev-server.js',
+      'build/webpack.base.conf.js',
+      'build/webpack.prod.conf.js',
+      'src/main.js'
+    ];
+
+    _.forEach(target, file => {
+      const readmeTmpl = _.template(this.fs.read(this.templatePath(file)));
+      this.fs.write(this.destinationPath(file), readmeTmpl(this.props));
     });
   }
 };

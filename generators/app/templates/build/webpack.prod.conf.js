@@ -9,9 +9,9 @@ import * as utils from './utils';
 import config from '../config';
 import baseWebpackConfig from './webpack.base.conf';
 
-const { env } = {{#unit}}process.env.NODE_ENV === 'testing'
+const { env } = <% if(unitTest){ %>process.env.NODE_ENV === 'testing'
   ? require('../config/test.env').default
-  : {{/unit}}config.build;
+  : <% } %>config.build;
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -53,9 +53,9 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: {{#unit}}process.env.NODE_ENV === 'testing'
+      filename: <% if(unitTest){ %>process.env.NODE_ENV === 'testing'
         ? 'index.html'
-        : {{/unit}}config.build.index,
+        : <% } %>config.build.index,
       template: 'index.html',
       inject: true,
       minify: {
@@ -66,7 +66,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      favicon: utils.resolve('src/assets/img/favicon.ico')
     }),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),

@@ -1,7 +1,7 @@
 <template>
   <header class="page-hd">
     <router-link :to="{name:'root'}" class="btn-nav page-logo">
-      <img src="~@/assets/img/f_logo.svg" alt=""> DASHBOARD
+      <img src="~@/assets/img/f_logo.svg" alt=""> ProductAI
     </router-link>
     <button class="btn btn-nav" type="button" @click="goBack">
       <Icon type="arrow-left-c"/>

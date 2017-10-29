@@ -4,9 +4,9 @@ dist/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-{{#unit}}
+<% if(unitTest){ %>
 test/unit/coverage
-{{/unit}}
+<% } %>
 
 # Editor directories and files
 .idea

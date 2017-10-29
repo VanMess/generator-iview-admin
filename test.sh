@@ -1,5 +1,2 @@
 npm link
-rm test
-mkdir test 
-cd test
-yo iview-admin
+cd test && yo iview-admin

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="50px" viewBox="0 0 44 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="22.02906 0 2.56758105 11.0714286 9.47326712 15 22.02906 7.85714286 34.5848528 15 41.4905389 11.0714286"></polygon>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="footer" transform="translate(-160.000000, -85.000000)">
+            <g id="关于码隆">
+                <g transform="translate(160.000000, 85.000000)">
+                    <g id="logo">
+                        <polygon fill="#fff" points="9.69975062 42.8107345 9.69975062 35.3107345 19.4860226 40.8780406 19.4860226 48.3780406"></polygon>
+                        <polygon id="Combined-Shape" fill="#fff" points="22.2523691 49.9273608 34.5758227 42.9166789 34.5758227 35.4166789 29.1390049 38.5096268 29.1390049 31.3559322 22.2523691 35.2736662"></polygon>
+                        <polygon id="Mask" fill="#fff" points="43.945275 12.4490701 21.9726375 24.9490701 0.0346139801 12.4293785 0 37.4490701 6.94030005 41.397333 6.97491403 24.2741674 21.9726375 32.8062129 36.970361 24.2741674 36.970361 41.3776415 43.945275 37.4490701"></polygon>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#fff" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
