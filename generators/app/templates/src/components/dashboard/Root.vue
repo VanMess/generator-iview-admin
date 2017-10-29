@@ -11,9 +11,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import _ from 'lodash';
-  import '@/css/frame.less';
-
   import HeaderCtrl from './Header';
 
   export default {

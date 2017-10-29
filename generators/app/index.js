@@ -1,7 +1,6 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
-const beautify = require('gulp-beautify');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -68,7 +67,6 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.registerTransformStream(beautify({indent_size: 2}));
     this.initPackage();
     this.simplyCopyFiles();
     this.renderTplFile();
@@ -167,6 +165,7 @@ module.exports = class extends Generator {
       '.editorconfig',
       '.eslintignore',
       '.postcssrc.js',
+      'index.html',
       'static/.gitkeep',
       'config/dev.env.js',
       'config/index.js',

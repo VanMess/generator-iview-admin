@@ -88,7 +88,7 @@ console.log('> Starting dev server...');
 devMiddleware.waitUntilValid(() => {
   portfinder.getPort((error, realPort) => {
     if (error) {
-      _reject(error)
+      _reject(error);
     }
     process.env.PORT = realPort;
     const uri = `http://localhost:${realPort}`;
