@@ -22,41 +22,34 @@ Scaffolds out a complete generator directory structure for you:
 ```
 .
 ├── .gitignore
-├── .jshintrc
-├── README.md
-├── app.js
-├── lib
-│   ├── const
-│   │   └── index.js
-│   ├── controllers
-│   │   └── index.js
-│   ├── db
-│   │   ├── mysql-redis-cache.js
-│   │   ├── mysql.js
-│   │   └── redis.js
-│   ├── index.js
-│   ├── logger
-│   │   └── index.js
-│   ├── middlewares
-│   │   ├── filter.js
-│   │   ├── koa-log4js.js
-│   │   ├── request-id.js
-│   │   └── x-response-time.js
-│   ├── models
-│   │   └── index.js
-│   ├── routes
-│   │   └── index.js
-│   ├── schemas
-│   │   └── index.js
-│   ├── services
-│   │   └── index.js
-│   └── utils
-│       ├── helper.js
-│       ├── qiniu.js
-│       └── resp-code-handler.js
+├── .babelrc
+├── .editorconfig
+├── .eslintignore
+├── .eslintrc.js
+├── .gitignore
+├── .postcssrc.js
+├── index.html
 ├── package.json
-├── pm2.json
-└── public
+├── README.md
+├── build
+│   ├── build.js
+│   ├── check-versions.js
+│   ├── dev-client.js
+│   ├── dev-server.js
+│   ├── utils.js
+│   ├── vue-loader.conf.js
+│   ├── webpack.base.conf.js
+│   ├── webpack.dev.conf.js
+│   ├── webpack.prod.conf.js
+│   ├── webpack.test.conf.js
+├── config
+│   ├── dev.env.js
+│   ├── index.js
+│   ├── prod.env.js
+│   ├── test.env.js
+├── src
+├── static
+├── test
 ```
 
 ## Run the demo
