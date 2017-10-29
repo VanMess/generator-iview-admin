@@ -9,6 +9,7 @@ import 'classlist-polyfill';
 
 import 'normalize.css';
 import 'iview/dist/styles/iview.css';
+import 'font-awesome/css/font-awesome.css';
 import '@/css/index.less';
 
 import App from './App';

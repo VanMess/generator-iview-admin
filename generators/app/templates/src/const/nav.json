@@ -1,0 +1,41 @@
+[
+  {
+    "title": "首页",
+    "icon": "home",
+    "to": {
+      "name": "root"
+    }
+  },
+  {
+    "title": "菜单1",
+    "icon": "user",
+    "children": [
+      {
+        "title": "子菜单1",
+        "to": {
+          "name": "fake"
+        }
+      },
+      {
+        "title": "子菜单2",
+        "to": {
+          "name": "fake2"
+        }
+      }
+    ]
+  },
+  {
+    "title": "外链菜单",
+    "icon": "search",
+    "children": [
+      {
+        "href": "http://yeoman.io/authoring/file-system.html",
+        "title": "File System"
+      },
+      {
+        "href": "http://yeoman.io/generators/",
+        "title": "generators"
+      }
+    ]
+  }
+]
