@@ -6,9 +6,7 @@ const _ = require('lodash');
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay('Welcome to the divine ' + chalk.red('generator-iview-admin') + ' generator!')
-    );
+    this.log(yosay('Welcome to the divine ' + chalk.red('generator-iview-admin') + ' generator!'));
 
     const prompts = [{
       type: 'input',
@@ -62,7 +60,7 @@ module.exports = class extends Generator {
       name: 'unitTest'
     }];
 
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       // To access props later use this.props.someAnswer;
       this.props = props;
     });
@@ -96,18 +94,18 @@ module.exports = class extends Generator {
       switch (props.lintStyle) {
         case 'standard':
           lintDep = {
-            "eslint-config-standard": "^10.2.1",
-            "eslint-plugin-promise": "^3.4.0",
-            "eslint-plugin-standard": "^3.0.1",
-            "eslint-plugin-import": "^2.7.0",
-            "eslint-plugin-node": "^5.2.0"
+            'eslint-config-standard': '^10.2.1',
+            'eslint-plugin-promise': '^3.4.0',
+            'eslint-plugin-standard': '^3.0.1',
+            'eslint-plugin-import': '^2.7.0',
+            'eslint-plugin-node': '^5.2.0'
           };
           break;
         case 'airbnb':
           lintDep = {
-            "eslint-config-airbnb-base": "^12.1.0",
-            "eslint-import-resolver-webpack": "^0.8.3",
-            "eslint-plugin-import": "^2.7.0"
+            'eslint-config-airbnb-base': '^12.1.0',
+            'eslint-import-resolver-webpack': '^0.8.3',
+            'eslint-plugin-import': '^2.7.0'
           };
           break;
         default:
@@ -116,11 +114,11 @@ module.exports = class extends Generator {
       }
       pkg = _.merge(pkg, {
         devDependencies: {
-          "babel-eslint": "^7.1.1",
-          "eslint": "^4.9.0",
-          "eslint-friendly-formatter": "^3.0.0",
-          "eslint-loader": "^1.7.1",
-          "eslint-plugin-html": "^3.0.0",
+          'babel-eslint': '^7.1.1',
+          eslint: '^4.9.0',
+          'eslint-friendly-formatter': '^3.0.0',
+          'eslint-loader': '^1.7.1',
+          'eslint-plugin-html': '^3.0.0',
         }
       }, {
         devDependencies: lintDep
@@ -175,7 +173,7 @@ module.exports = class extends Generator {
       ]);
     }
 
-    _.forEach(simplyFiles, file => {
+    _.forEach(simplyFiles, (file) => {
       this.fs.copy(
         this.templatePath(file),
         file
@@ -193,9 +191,12 @@ module.exports = class extends Generator {
       'src/main.js'
     ];
 
-    _.forEach(target, file => {
-      const readmeTmpl = _.template(this.fs.read(this.templatePath(file)));
-      this.fs.write(this.destinationPath(file), readmeTmpl(this.props));
+    _.forEach(target, (file) => {
+      this.fs.copyTpl(
+        this.templatePath(file),
+        this.destinationPath(file),
+        this.props
+      );
     });
   }
 };
