@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const beautify = require('gulp-beautify');
 const _ = require('lodash');
 
 module.exports = class extends Generator {
@@ -29,13 +30,13 @@ module.exports = class extends Generator {
       type: 'list',
       message: 'Pick an ESLint preset',
       choices: [{
-        name: 'Standard (https://github.com/feross/standard)',
-        value: 'standard',
-        short: 'Standard'
-      }, {
         name: 'Airbnb (https://github.com/airbnb/javascript)',
         value: 'airbnb',
         short: 'Airbnb'
+      }, {
+        name: 'Standard (https://github.com/feross/standard)',
+        value: 'standard',
+        short: 'Standard'
       }, {
         name: 'none (configure it yourself)',
         value: 'none',
@@ -67,6 +68,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    this.registerTransformStream(beautify({indent_size: 2}));
     this.initPackage();
     this.simplyCopyFiles();
     this.renderTplFile();
@@ -113,6 +115,9 @@ module.exports = class extends Generator {
           break;
       }
       pkg = _.merge(pkg, {
+        scripts: {
+          lint: 'eslint --ext .js,.vue src config build' + (props.unitTest ? ' test/unit/specs' : '')
+        },
         devDependencies: {
           'babel-eslint': '^7.1.1',
           eslint: '^4.9.0',
@@ -125,6 +130,34 @@ module.exports = class extends Generator {
       });
     }
 
+    if (props.unitTest) {
+      pkg = _.merge(pkg, {
+        scripts: {
+          unit: 'cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run',
+          test: 'npm run unit'
+        },
+        devDependencies: {
+          'cross-env': '^5.0.1',
+          karma: '^1.4.1',
+          'karma-coverage': '^1.1.1',
+          'karma-mocha': '^1.3.0',
+          'karma-phantomjs-launcher': '^1.0.2',
+          'karma-phantomjs-shim': '^1.4.0',
+          'karma-sinon-chai': '^1.3.1',
+          'karma-sourcemap-loader': '^0.3.7',
+          'karma-spec-reporter': '0.0.31',
+          'karma-webpack': '^2.0.2',
+          mocha: '^3.2.0',
+          chai: '^4.1.2',
+          sinon: '^4.0.0',
+          'sinon-chai': '^2.8.0',
+          'inject-loader': '^3.0.0',
+          'babel-plugin-istanbul': '^4.1.1',
+          'phantomjs-prebuilt': '^2.1.14'
+        }
+      });
+    }
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
@@ -133,7 +166,6 @@ module.exports = class extends Generator {
       '.babelrc',
       '.editorconfig',
       '.eslintignore',
-      '.gitignore',
       '.postcssrc.js',
       'static/.gitkeep',
       'config/dev.env.js',
@@ -163,6 +195,7 @@ module.exports = class extends Generator {
 
     if (this.props.unitTest) {
       simplyFiles = simplyFiles.concat([
+        '.gitignore',
         'config/test.env.js',
         'test/unit/.eslintrc',
         'test/unit/index.js',

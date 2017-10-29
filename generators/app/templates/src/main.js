@@ -21,7 +21,6 @@ Vue.use(vueMeta);
 new Vue({
   el: '#app',
   router,
-  {{#if_eq build "runtime"}}
   <% if(vueFile==='runtime'){ %>
   render: h => h(App)
   <% } else if(vueFile==='standalone'){ %>
