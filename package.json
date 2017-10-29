@@ -1,12 +1,12 @@
 {
   "name": "generator-iview-admin",
-  "version": "0.0.0",
-  "description": "",
-  "homepage": "",
+  "version": "1.0.0",
+  "description": "Vue project template with iview.",
+  "homepage": "https://github.com/VanMess/generator-iview-admin",
   "author": {
     "name": "tenvan",
-    "email": "694248616@qq.com",
-    "url": ""
+    "email": "1321907687@qq.com",
+    "url": "https://github.com/VanMess"
   },
   "files": ["generators"],
   "main": "generators/index.js",

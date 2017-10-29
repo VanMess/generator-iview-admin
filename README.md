@@ -1,6 +1,28 @@
 # generator-iview-admin
 A yo generator with [iView](https://www.iviewui.com/) from tecvan.
 
+<p align="left">
+  <a href="https://www.npmjs.com/package/generator-iview-admin">
+    <img src="https://www.npmjs.com/package/generator-iview-admin.svg?style=flat-square"
+         alt="NPM Version">
+  </a>
+
+  <a href="https://www.npmjs.com/package/generator-iview-admin">
+    <img src="https://www.npmjs.com/package/generator-iview-admin.svg?style=flat-square"
+         alt="Downloads">
+  </a>
+
+  <a href="https://david-dm.org/solee0524/generator-koa-sudiyi.svg">
+    <img src="https://david-dm.org/solee0524/generator-koa-sudiyi.svg?style=flat-square"
+         alt="Dependency Status">
+  </a>
+
+  <a href="https://github.com/VanMess/generator-iview-admin/blob/master/LICENSE">
+    <img src="https://img.shields.io/npm/l/generator-iview-admin.svg?style=flat-square"
+         alt="License">
+  </a>
+</p>
+
 ## Installation
 
 First, install [Yeoman](http://yeoman.io) and **generator-iview-admin** using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
