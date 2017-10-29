@@ -12,11 +12,6 @@ A yo generator with [iView](https://www.iviewui.com/) from tecvan.
          alt="Downloads">
   </a>
 
-  <a href="https://david-dm.org/solee0524/generator-koa-sudiyi.svg">
-    <img src="https://david-dm.org/solee0524/generator-koa-sudiyi.svg?style=flat-square"
-         alt="Dependency Status">
-  </a>
-
   <a href="https://github.com/VanMess/generator-iview-admin/blob/master/LICENSE">
     <img src="https://img.shields.io/npm/l/generator-iview-admin.svg?style=flat-square"
          alt="License">
