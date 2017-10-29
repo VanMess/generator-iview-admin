@@ -3,7 +3,7 @@ A yo generator with [iView](https://www.iviewui.com/) from tecvan.
 
 <p align="left">
   <a href="https://www.npmjs.com/package/generator-iview-admin">
-    <img src="https://www.npmjs.com/package/generator-iview-admin.svg?style=flat-square"
+    <img src="https://img.shields.io/npm/v/generator-iview-admin.svg?style=flat-square"
          alt="NPM Version">
   </a>
 
