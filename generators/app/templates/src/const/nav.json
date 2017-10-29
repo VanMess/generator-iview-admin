@@ -3,7 +3,7 @@
     "title": "首页",
     "icon": "home",
     "to": {
-      "name": "root"
+      "name": "index"
     }
   },
   {
@@ -13,13 +13,13 @@
       {
         "title": "子菜单1",
         "to": {
-          "name": "fake"
+          "name": "index"
         }
       },
       {
         "title": "子菜单2",
         "to": {
-          "name": "fake2"
+          "name": "index"
         }
       }
     ]
