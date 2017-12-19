@@ -162,10 +162,10 @@ module.exports = class extends Generator {
 
   renderTplFile() {
     let target = [
-      '.babelrc',
-      '.editorconfig',
-      '.gitignore',
-      '.postcssrc.js',
+      ['_babelrc', '.babelrc'],
+      ['_editorconfig', '.editorconfig'],
+      ['_gitignore', '.gitignore'],
+      ['_postcssrc.js', '.postcssrc.js'],
       'index.html',
       'static/.gitkeep',
       'config/dev.env.js',
@@ -214,15 +214,26 @@ module.exports = class extends Generator {
 
     if (this.props.lint) {
       target = target.concat([
-        '.eslintrc.js',
-        '.eslintignore'
+        ['_eslintrc.js', '.eslintrc.js'],
+        ['_eslintignore', '.eslintignore']
       ]);
     }
 
     _.forEach(target, (file) => {
+      let toFile;
+      let fromFile;
+      if (_.isArray(file)) {
+        // eslint-disable-next-line
+        fromFile = file[0];
+        // eslint-disable-next-line
+        toFile = file[1]
+      } else {
+        fromFile = file;
+        toFile = file;
+      }
       this.fs.copyTpl(
-        this.templatePath(file),
-        this.destinationPath(file),
+        this.templatePath(fromFile),
+        this.destinationPath(toFile),
         this.props
       );
     });
